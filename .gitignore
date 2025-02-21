@@ -1,0 +1,83 @@
+### C++ ###
+# Prerekvizity (dependency files)
+*.d
+
+# Přeložené objektové soubory
+*.slo
+*.lo
+*.o
+*.obj
+
+# Prekompilované hlavičky
+*.gch
+*.pch
+
+# Dynamické knihovny
+*.so
+*.dylib
+*.dll
+
+# Statické knihovny
+*.lai
+*.la
+*.a
+*.lib
+
+# Spustitelné soubory
+*.exe
+*.out
+*.app
+
+### CMake ###
+CMakeLists.txt.user  # CLion-specific
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+CMakeUserPresets.json
+cmake-build-*/
+*.vcxproj*  # Přidáno: Ignorovat Visual Studio projekty generované CMake
+
+### CLion ###
+.idea/
+*.iml
+.idea/workspace.xml
+.idea/shelf/
+.idea/tasks.xml
+.idea/vcs.xml
+.idea/caches/
+.idea/libraries/
+.idea/.name
+.idea/runConfigurations/*
+
+### Visual Studio ###
+# Konfigurace a dočasné soubory
+.vs/
+*.vcxproj.user
+*.suo
+*.sdf
+*.opensdf
+*.dbmdl
+*.pdb
+*.idb
+*.ilk
+*.log
+*.tlog
+
+# Adresáře s buildy
+[Dd]ebug*/
+[Dd]ebugPublic/
+[Rr]elease*/
+x64/
+x86/
+arm64/
+bld/
+
+# VS Code
+.vscode/  # Odkomentujte, pokud někdo používá VS Code
