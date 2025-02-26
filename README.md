@@ -5,7 +5,7 @@
 | Týden | Datum           | Zadání                                      | Progress |
 |-------|-----------------|---------------------------------------------|----------|
 | 1     | 10-16.2.2025     | a) Úvod do tématu                          | ✅       |
-| 2     | 17-23.2.2025     | a) Inicializace gitu<br>b) Inicializace projektu | ❌       |
+| 2     | 17-23.2.2025     | a) Inicializace gitu<br>b) Inicializace projektu | ✅       |
 | 3     | 24.2.-1.3.2025   | -                                           | ❌       |
 | 4     | 2-8.3.2025       | -                                           | ❌       |
 | 5     | 9-15.3.2025      | -                                           | ❌       |
