@@ -200,7 +200,6 @@ int main() {
         return -1;
     }
 
-    // Registrace callbacků
     glfwSetKeyCallback(window, key_callback);
     glfwSetFramebufferSizeCallback(window, fbsize_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
@@ -208,28 +207,14 @@ int main() {
     glfwSetScrollCallback(window, scroll_callback);
 
 
-    // Make context current
     glfwMakeContextCurrent(window);
 
-    // GLEW initialization
     glewExperimental = GL_TRUE;
     GLenum err = glewInit();
-    // Vyčistíme případnou spurious chybu, která vznikla při inicializaci
-    //glGetError();
     if (err != GLEW_OK) {
         std::cerr << "Error initializing GLEW: " << glewGetErrorString(err) << std::endl;
         return -1;
     }
-
-    // Print context informationope 
-    printContextInfo();
-
-    // FPS variables
-    double lastTime = glfwGetTime();
-    int frameCount = 0;
-    float fps = 0.0f;
-
-    // main loop
     
     App app;
     if (app.init()) {
