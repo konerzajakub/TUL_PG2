@@ -5,7 +5,7 @@ class App {
 public:
     bool init();
     void init_assets();
-    void run();
+    void run(GLFWwindow* window);
     ~App();
 
 private:

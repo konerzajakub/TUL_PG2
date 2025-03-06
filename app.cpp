@@ -80,7 +80,7 @@ void App::init_assets() {
     glVertexArrayVertexBuffer(VAO_ID, 0, VBO_ID, 0, sizeof(vertex));
 }
 
-void App::run() {
+void App::run(GLFWwindow* window) {
     GLfloat r, g, b, a;
     r = g = b = a = 1.0f;
 
