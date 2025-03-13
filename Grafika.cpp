@@ -221,7 +221,7 @@ int main() {
         return -1;
     }
 
-    // Print context information
+    // Print context informationope 
     printContextInfo();
 
     // FPS variables
