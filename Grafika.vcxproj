@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="app.cpp" />
     <ClCompile Include="Grafika.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +158,6 @@
     <Image Include="resources\lightbulb.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="app.hpp" />
     <ClInclude Include="assets.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
