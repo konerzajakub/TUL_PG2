@@ -90,8 +90,8 @@ bool init() {
 }
 
 void run(GLFWwindow* window) {
-    GLfloat r, g, b, a;
-    r = g = b = a = 1.0f;
+    //GLfloat r, g, b, a;
+    //r = g = b = a = 1.0f;
     double lastTime = glfwGetTime();
     int frameCount = 0;
     float fps = 0.0f;
@@ -142,6 +142,26 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
         // Přepnutí stavu VSync
         vsyncEnabled = !vsyncEnabled;
         glfwSwapInterval(vsyncEnabled ? 1 : 0);
+    }
+
+    // Přidání reakce na klávesy R, G, B
+    else if (key == GLFW_KEY_R && action == GLFW_PRESS) {
+        // Nastaví červenou složku na 1.0 a ostatní složky na 0.0
+        ::r = 1.0f;
+        ::g = 0.0f;
+        ::b = 0.0f;
+    }
+    else if (key == GLFW_KEY_G && action == GLFW_PRESS) {
+        // Nastaví zelenou složku na 1.0 a ostatní složky na 0.0
+        ::r = 0.0f;
+        ::g = 1.0f;
+        ::b = 0.0f;
+    }
+    else if (key == GLFW_KEY_B && action == GLFW_PRESS) {
+        // Nastaví modrou složku na 1.0 a ostatní složky na 0.0
+        ::r = 0.0f;
+        ::g = 0.0f;
+        ::b = 1.0f;
     }
 }
 
