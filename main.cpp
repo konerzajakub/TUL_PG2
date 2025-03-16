@@ -11,6 +11,8 @@
 #include "assets.hpp"
 #include <fstream>
 
+#include "ShaderProgram.hpp"
+
 
 
 bool vsyncEnabled = true;
@@ -27,46 +29,14 @@ std::vector<vertex> triangle_vertices = {
 
 
 void init_assets() {
-    const char* vertex_shader =
-        "#version 460 core\n"
-        "in vec3 attribute_Position;"
-        "void main() {"
-        "  gl_Position = vec4(attribute_Position, 1.0);"
-        "}";
+    // Load shaders from external files
+    ShaderProgram shader_program("shaders/vertex_shader.vert", "shaders/fragment_shader.frag");
+    shader_prog_ID = shader_program.getID();
 
-    const char* fragment_shader =
-        "#version 460 core\n"
-        "uniform vec4 uniform_Color;"
-        "out vec4 FragColor;"
-        "void main() {"
-        "  FragColor = uniform_Color;"
-        "}";
+    // Activate the shader program
+    shader_program.activate();
 
-    GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vs, 1, &vertex_shader, NULL);
-    glCompileShader(vs);
-
-    GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fs, 1, &fragment_shader, NULL);
-    glCompileShader(fs);
-
-    shader_prog_ID = glCreateProgram();
-    glAttachShader(shader_prog_ID, fs);
-    glAttachShader(shader_prog_ID, vs);
-    glLinkProgram(shader_prog_ID);
-
-    //now we can delete shader parts (they can be reused, if you have more shaders)
-    //the final shader program already linked and stored separately
-    glDetachShader(shader_prog_ID, fs);
-    glDetachShader(shader_prog_ID, vs);
-    glDeleteShader(vs);
-    glDeleteShader(fs);
-
-    // 
     // Create and load data into GPU using OpenGL DSA (Direct State Access)
-    //
-
-    // Create VAO + data description (just envelope, or container...)
     glCreateVertexArrays(1, &VAO_ID);
 
     GLint position_attrib_location = glGetAttribLocation(shader_prog_ID, "attribute_Position");
@@ -82,6 +52,7 @@ void init_assets() {
     // Connect together
     glVertexArrayVertexBuffer(VAO_ID, 0, VBO_ID, 0, sizeof(vertex));
 }
+
 bool init() {
     if (!GLEW_ARB_direct_state_access)
         throw std::runtime_error("No DSA :-(");
