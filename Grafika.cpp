@@ -138,7 +138,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
 
-    else if (key == GLFW_KEY_F12 && action == GLFW_PRESS) {
+    else if (key == GLFW_KEY_F10 && action == GLFW_PRESS) {
         // Přepnutí stavu VSync
         vsyncEnabled = !vsyncEnabled;
         glfwSwapInterval(vsyncEnabled ? 1 : 0);
