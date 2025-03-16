@@ -171,7 +171,7 @@ void calculateFPS(double lastTime, int frameCount, GLFWwindow* window) {
 }
 
 int main() {
-    Config config = loadConfig("config.json");
+    Config config = loadConfig("app_settings.json");
 
     // Set error callback
     glfwSetErrorCallback(error_callback);
