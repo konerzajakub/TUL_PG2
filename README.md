@@ -7,8 +7,8 @@
 | 1     | 10-16.2.2025     | a) Úvod do tématu                          | ✅       |
 | 2     | 17-23.2.2025     | a) Inicializace gitu<br>b) Inicializace projektu | ✅       |
 | 3     | 24.2.-1.3.2025   | Vykreslit trojúhelník                        | ✅       |
-| 4     | 2-8.3.2025       | a) nvm                                           | ❌       |
-| 5     | 9-15.3.2025      | -                                           | ❌       |
+| 4     | 2-8.3.2025       | Načtení modelu                                           | ❌       |
+| 5     | 9-15.3.2025      | Transformace, kamera                                           | ❌       |
 | 6     | 16-22.3.2025     | -                                           | ❌       |
 | 7     | 23-29.3.2025     | -                                           | ❌       |
 | 8     | 30.3.-5.4.2025   | -                                           | ❌       |
