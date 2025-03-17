@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="fragment_shader.frag" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
   </ItemGroup>
@@ -155,7 +154,6 @@
     <None Include="app_settings.json" />
     <None Include="vcpkg-configuration.json" />
     <None Include="vcpkg.json" />
-    <None Include="vertex_shader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\lightbulb.jpg" />
