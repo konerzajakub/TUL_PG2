@@ -152,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app_settings.json" />
+    <None Include="shaders\fragment_shader.frag" />
+    <None Include="shaders\vertex_shader.vert" />
     <None Include="vcpkg-configuration.json" />
     <None Include="vcpkg.json" />
   </ItemGroup>

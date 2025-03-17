@@ -26,6 +26,8 @@
     <None Include="vcpkg.json" />
     <None Include="vcpkg-configuration.json" />
     <None Include="app_settings.json" />
+    <None Include="shaders\fragment_shader.frag" />
+    <None Include="shaders\vertex_shader.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\lightbulb.jpg">
