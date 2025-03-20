@@ -131,6 +131,46 @@ public:
         // TODO: draw mesh: bind vertex array object, draw all elements with selected primitive type
     }
 
+    void draw(glm::mat4 const& model)
+    {
+
+        if (VAO == 0) {
+            std::cerr << "VAO not initialized!\n";
+            return;
+        }
+
+        shader.activate();
+
+        // Set model matrix uniform
+        GLint modelLoc = glGetUniformLocation(shader.getID(), "model");
+        if (modelLoc != -1) {
+            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        }
+
+        // Bind texture if available
+        if (texture_id != 0) {
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, texture_id);
+            GLint texLoc = glGetUniformLocation(shader.getID(), "texture_diffuse1");
+            if (texLoc != -1) {
+                glUniform1i(texLoc, 0);
+            }
+        }
+
+        // Draw call
+        glBindVertexArray(VAO);
+        glDrawElements(primitive_type, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
+
+        // for future use: set uniform variables: position, textures, etc...
+        // set texture id etc...
+        // if (texture_id > 0) {
+        //    ...
+        //}
+
+        // TODO: draw mesh: bind vertex array object, draw all elements with selected primitive type
+    }
+
     void clear(void)
     {
         texture_id = 0;
