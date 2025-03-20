@@ -163,6 +163,7 @@
     <Image Include="resources\lightbulb.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.hpp" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="OBJloader.hpp" />

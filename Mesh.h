@@ -141,20 +141,12 @@ public:
 
         shader.activate();
 
-        // Set model matrix uniform
-        GLint modelLoc = glGetUniformLocation(shader.getID(), "model");
-        if (modelLoc != -1) {
-            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        }
-
+        shader.setUniform("uM_m", model);
         // Bind texture if available
         if (texture_id != 0) {
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, texture_id);
-            GLint texLoc = glGetUniformLocation(shader.getID(), "texture_diffuse1");
-            if (texLoc != -1) {
-                glUniform1i(texLoc, 0);
-            }
+            //shader.setUniform("uM_m", texture_id);
         }
 
         // Draw call
