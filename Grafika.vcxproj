@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OBJloader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,9 @@
     <Image Include="resources\lightbulb.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="OBJloader.hpp" />
     <ClInclude Include="assets.hpp" />
     <ClInclude Include="ShaderProgram.hpp" />
   </ItemGroup>

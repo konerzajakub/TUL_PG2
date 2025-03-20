@@ -10,6 +10,8 @@
 #include <nlohmann/json.hpp>
 #include "assets.hpp"
 #include <fstream>
+#include "Mesh.h"
+#include "OBJloader.hpp"
 
 #include "ShaderProgram.hpp"
 
@@ -21,18 +23,39 @@ GLuint shader_prog_ID{ 0 };
 GLuint VBO_ID{ 0 };
 GLuint VAO_ID{ 0 };
 GLfloat r{ 1.0f }, g{ 0.0f }, b{ 0.0f }, a{ 1.0f };
-std::vector<vertex> triangle_vertices = {
-    {{0.0f,  0.5f,  0.0f}},
-    {{0.5f, -0.5f,  0.0f}},
-    {{-0.5f, -0.5f,  0.0f}}
-};
+std::vector<Vertex> vertices;
 
 
 void init_assets() {
     // Load shaders from external files
     ShaderProgram shader_program("shaders/vertex_shader.vert", "shaders/fragment_shader.frag");
     shader_prog_ID = shader_program.getID();
+    std::vector<glm::vec3> out_vertices;
+    std::vector<glm::vec2> out_uvs;
+    std::vector<glm::vec3> out_normals;
 
+    const char* obj_path = "resources/triangle.obj";
+    if (!loadOBJ(obj_path, out_vertices, out_uvs, out_normals)) {
+        std::cerr << "Failed to load " << obj_path << std::endl;
+        throw std::runtime_error("OBJ loading failed");
+    }
+    if (out_vertices.size() != out_uvs.size() || out_vertices.size() != out_normals.size()) {
+        std::cerr << "Mismatch in vertex, UV, or normal counts from OBJ file\n";
+        throw std::runtime_error("Invalid OBJ data");
+    }
+    for (size_t i = 0; i < out_vertices.size(); ++i) {
+        Vertex v;
+        v.Position = out_vertices[i];
+        v.Normal = out_normals[i];
+        v.TexCoords = out_uvs[i];
+        vertices.push_back(v);
+    }
+    std::vector<GLuint> indices;
+    for (GLuint i = 0; i < static_cast<GLuint>(vertices.size()); ++i) {
+        indices.push_back(i);
+    }
+    Mesh mesh = Mesh(GL_TRIANGLES, shader_program, vertices, indices, glm::vec3(0.0f), glm::vec3(0.0f));
+    VAO_ID = mesh.getVAO();
     // Activate the shader program
     shader_program.activate();
 
@@ -42,15 +65,15 @@ void init_assets() {
     GLint position_attrib_location = glGetAttribLocation(shader_prog_ID, "attribute_Position");
 
     glEnableVertexArrayAttrib(VAO_ID, position_attrib_location);
-    glVertexArrayAttribFormat(VAO_ID, position_attrib_location, 3, GL_FLOAT, GL_FALSE, offsetof(vertex, position));
+    glVertexArrayAttribFormat(VAO_ID, position_attrib_location, 3, GL_FLOAT, GL_FALSE, offsetof(Vertex, Position));
     glVertexArrayAttribBinding(VAO_ID, position_attrib_location, 0); // (GLuint vaobj, GLuint attribindex, GLuint bindingindex)
 
     // Create and fill data
     glCreateBuffers(1, &VBO_ID);
-    glNamedBufferData(VBO_ID, triangle_vertices.size() * sizeof(vertex), triangle_vertices.data(), GL_STATIC_DRAW);
+    glNamedBufferData(VBO_ID, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
 
     // Connect together
-    glVertexArrayVertexBuffer(VAO_ID, 0, VBO_ID, 0, sizeof(vertex));
+    glVertexArrayVertexBuffer(VAO_ID, 0, VBO_ID, 0, sizeof(Vertex));
 }
 
 bool init() {
@@ -92,7 +115,7 @@ void run(GLFWwindow* window) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUniform4f(uniform_color_location, r, g, b, a);
         glBindVertexArray(VAO_ID);
-        glDrawArrays(GL_TRIANGLES, 0, triangle_vertices.size());
+        glDrawArrays(GL_TRIANGLES, 0, vertices.size());
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
