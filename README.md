@@ -41,5 +41,5 @@
 - `miniaudio` (src/miniaudio/miniaudio.h) - stažený z internetu
 
 ## Spuštění
-- Vytvářel jsem to ve Visual Studio 2022, mělo by to tam jít spustit
+- Vytvářel jsem to ve Visual Studio 2022, mělo by to jít spustit v projektu
 - Pozor aby byly stažené závislosti přes VCPKG a OpenCV na C: (v path)
