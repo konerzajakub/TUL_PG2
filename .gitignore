@@ -1,0 +1,43 @@
+# Build výstupy
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.idb
+*.exp
+*.suo
+*.user
+*.cache
+*.log
+
+# VS složky
+.vs/
+.vscode/
+
+# Build adresáře
+x64/
+x64
+x86/
+Debug/
+Release/
+bin/
+build/
+
+# vcpkg (lokálně nainstalované knihovny)
+vcpkg_installed/
+
+# CMake cache
+CMakeFiles/
+CMakeCache.txt
+cmake-build-*/
+
+# Generované soubory
+*.tlog
+*.lastbuildstate
+*.VC.db
+*.VC.opendb
+
+
+PG2_test_v1/
