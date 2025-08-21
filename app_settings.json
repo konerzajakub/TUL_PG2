@@ -1,0 +1,15 @@
+{
+    "antialiasing": {
+        "enabled": false,
+        "level": 0
+    },
+    "window": {
+        "fullscreen": false,
+        "height": 720,
+        "pos_x": 483,
+        "pos_y": 207,
+        "title": "PG2 Test v1",
+        "vsync": false,
+        "width": 1280
+    }
+}
