@@ -1,4 +1,4 @@
-# PG2
+# Počítačová grafika 2
 
 ## Funkce
 | Požadavek | Splněno |
@@ -17,29 +17,51 @@
 | Výšková mapa texturovaná podle výšky | ✅ |
 | Zvuk (lepší než jen na pozadí) | ✅ (zvuk při skákání) |
 
+---
 
-## 🕹️ Ovládání
+## 🎯 Ovládání
 
-| Klávesa / Myš     | Akce                                      |
-|-------------------|--------------------------------------------|
-| `W A S D`         | Pohyb dopředu, dozadu, do stran            |
-| Myš               | Otáčení kamery (FPS look)                  |
-| `SPACE`           | Skok                 |
-| `F10`              | Přepínání fullscreen/window                |
-| `F11`               | Přepnutí antialiasing |
-| `F12`              | Přepínání VSync                            |
-| `Esc`             | Zavřít aplikaci                            |
-| Kolečko myši      | Zoom (změna FOV)     |
+### 🕹️ Pohyb postavy
+| Klávesa | Akce |
+|:---:|---|
+| **W** | Pohyb dopředu |
+| **S** | Pohyb dozadu |
+| **A** | Pohyb doleva |
+| **D** | Pohyb doprava |
+| **Mezerník** | Skok |
 
-## 🔧 Závislosti
+### 👁️ Ovládání kamery
+| Ovládací prvek | Akce |
+|:---:|---|
+| **Pohyb myší** | Otáčení kamery (FPS pohled) |
+| **Kolečko myši** | Přiblížení/oddálení (změna FOV) |
 
-- `GLFW`
-- `GLEW`
-- `GLM`
-- `OpenCV` (linknuté na C:)
-- `nlohmann/json`
-- `miniaudio` (src/miniaudio/miniaudio.h) - stažený z internetu
+### ⚙️ Nastavení systému
+| Klávesa | Funkce |
+|:---:|---|
+| **F10** | Přepínání režimu celá obrazovka/okno |
+| **F11** | Přepnutí antialiasingu (potřeba restart aplikace) |
+| **F12** | Přepnutí VSync |
+| **Esc** | Ukončení aplikace |
 
-## Spuštění
-- Vytvářel jsem to ve Visual Studio 2022, mělo by to jít spustit v projektu
-- Pozor aby byly stažené závislosti přes VCPKG a OpenCV na C: (v path)
+---
+### 📦 Požadované knihovny
+- **GLFW** - Správa oken a vstupů
+- **GLEW** - Rozšíření OpenGL
+- **GLM** - Matematická knihovna pro grafiku
+- **OpenCV** - Počítačové vidění (nainstalováno na `C:`)
+- **nlohmann/json** - Práce s JSON daty
+- **miniaudio** - Zvukový engine (součást projektu)
+---
+## 🚀 Instalace a spuštění
+
+### Prerekvizity
+- Visual Studio 2022
+- Správce balíčků VCPKG pro závislosti
+- OpenCV nainstalované na výchozí cestě `C:`
+
+### Kroky pro spuštění
+1. Naklonujte/otevřete projekt ve Visual Studio 2022
+2. Stáhněte závislosti přes VCPKG
+3. Sestavte řešení
+4. Spusťte aplikaci
