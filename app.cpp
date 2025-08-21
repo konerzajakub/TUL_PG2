@@ -230,6 +230,8 @@ App::App() : camera(Camera(glm::vec3(0.0f, 0.0f, 3.0f))) {
     GLuint box_texture = textureInit("resources/textures/box_rgb888.png");
     cube_model.setTexture(box_texture);
 
+
+
     // Vytvoření průhledných kostek
     Model transparent_cube1 = cube_model;
     transparent_cube1.transparent = true;
@@ -257,6 +259,16 @@ App::App() : camera(Camera(glm::vec3(0.0f, 0.0f, 3.0f))) {
     model_m = glm::scale(model_m, glm::vec3(2.0f));
     transparent_cube3.setMatrix(model_m);
     scene["transparent_cube3"] = transparent_cube3;
+
+    // Načtení modelu králíčka
+    Model bunny_model("resources/objects/bunny_tri_vnt.obj");
+    bunny_model.setTexture(box_texture);
+    glm::mat4 bunny_matrix = glm::mat4(1.0f);
+    bunny_matrix = glm::translate(bunny_matrix, glm::vec3(50.0f, 101.0f, 40.0f));
+    bunny_matrix = glm::scale(bunny_matrix, glm::vec3(0.5f));
+    bunny_model.setMatrix(bunny_matrix);
+    scene["bunny"] = bunny_model;
+
 
     // Načtení textur stěn
     wall_textures.clear();
@@ -542,6 +554,9 @@ void App::run() {
                             }
                         }
                     }
+                }
+                else {
+                    model.draw(lighting_shader);
                 }
             } else {
                 transparent_models.push_back(&model);
